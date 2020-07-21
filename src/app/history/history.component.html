@@ -1,0 +1,17 @@
+<div>
+    <ul>
+        <br>
+        <li *ngFor="let od of history">
+            id: {{od.id}}
+            <div>
+                <ul>
+                    <li *ngFor="let c of od.content">
+                        content.id: {{c.id}}<br>
+                        content.qty: {{c.qty}}<br>
+                    </li>
+                </ul>
+            </div>
+            time: {{od.time}}
+        </li>
+    </ul>
+</div>
