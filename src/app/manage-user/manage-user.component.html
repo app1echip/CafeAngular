@@ -1,0 +1,22 @@
+<div>
+    <ul>
+        <li *ngFor="let u of users">
+            id: <input [(ngModel)]="u.id">
+            username: <input [(ngModel)]="u.username">
+            password: <input [(ngModel)]="u.password"><br>
+            email: <input [(ngModel)]="u.email">
+            phone: <input [(ngModel)]="u.phone">
+            <button (click)="update_user(u)">提交</button>
+            <button (click)="delete_user(u)">删除</button>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <ul>
+        <li *ngFor="let i of user_roles">
+            id: {{i.user}}, role: <input [(ngModel)]="i.role">
+            <button (click)="change_role(i)">提交</button>
+        </li>
+    </ul>
+</div>

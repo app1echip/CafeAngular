@@ -17,6 +17,9 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderInterceptor } from 'src/app/config/header-interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { CartComponent } from './cart/cart.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
+import { ManageFoodComponent } from './manage-food/manage-food.component';
+import { ManageOrderComponent } from './manage-order/manage-order.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { CartComponent } from './cart/cart.component';
     MenuComponent,
     HistoryComponent,
     ProfileComponent,
-    CartComponent
+    CartComponent,
+    ManageUserComponent,
+    ManageFoodComponent,
+    ManageOrderComponent
   ],
   imports: [
     BrowserModule,

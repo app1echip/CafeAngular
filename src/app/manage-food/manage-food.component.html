@@ -1,0 +1,27 @@
+<div>
+    <ul>
+        <li *ngFor="let food of foods">
+            id: <input [(ngModel)]="food.id">
+            name: <input [(ngModel)]="food.name">
+            <button (click)="update_food(food)">提交</button>
+            <button (click)="delete_food(food)">删除</button> <br>
+            cate: <input [(ngModel)]="food.cate">
+            price: <input type="number" [(ngModel)]="food.price">
+            stock: <input type="number" [(ngModel)]="food.stock"><br>
+            sales: <input type="number" [(ngModel)]="food.sales">
+            des: <input [(ngModel)]="food.des">
+            img: <input type="url" [(ngModel)]="food.img"><br><br>
+        </li>
+        新增：
+        <li>
+            name: <input [(ngModel)]="nf.name">
+            <button (click)="update_food(nf)">提交</button> <br>
+            cate: <input [(ngModel)]="nf.cate">
+            price: <input type="number" [(ngModel)]="nf.price">
+            stock: <input type="number" [(ngModel)]="nf.stock"><br>
+            sales: <input type="number" [(ngModel)]="nf.sales">
+            des: <input [(ngModel)]="nf.des">
+            img: <input type="url" [(ngModel)]="nf.img"><br><br>
+        </li>
+    </ul>
+</div>

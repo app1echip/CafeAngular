@@ -1,0 +1,23 @@
+<div>
+    <ul>
+        <li *ngFor="let i of orders">
+            id: <input [(ngModel)]="i.id">
+            user: <input [(ngModel)]="i.user">
+            date: <input type="datetime" [(ngModel)]="i.time">
+            <button (click)="update_order(i)">提交</button>
+            <button (click)="delete_order(i)">删除</button>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <ul>
+        <li *ngFor="let i of ofs">
+            order-id: <input [(ngModel)]="i.id.ordre">
+            food-id: <input [(ngModel)]="i.id.food">
+            qty: <input type="number" [(ngModel)]="i.qty">
+            <button (click)="update_order_food(i)">提交</button>
+            <button (click)="delet_order_food(i)">删除</button>
+        </li>
+    </ul>
+</div>

@@ -4,7 +4,6 @@
 <button (click)="push_item()">提交</button>
 <div>
     <ul>
-        <br>
         <li *ngFor="let food of foods">
             id: <input [(ngModel)]="food.id">
             name: <input [(ngModel)]="food.name">
