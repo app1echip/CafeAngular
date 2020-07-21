@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { MenuComponent } from './menu/menu.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HistoryComponent } from './history/history.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ManageUserComponent } from './manage-user/manage-user.component';
-import { ManageFoodComponent } from './manage-food/manage-food.component';
-import { ManageOrderComponent } from './manage-order/manage-order.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HistoryComponent } from '@app/history/history.component';
+import { LoginComponent } from '@app/login/login.component';
+import { ManageFoodComponent } from '@app/manage-food/manage-food.component';
+import { ManageOrderComponent } from '@app/manage-order/manage-order.component';
+import { ManageUserComponent } from '@app/manage-user/manage-user.component';
+import { MenuComponent } from '@app/menu/menu.component';
+import { ProfileComponent } from '@app/profile/profile.component';
+import { RegisterComponent } from '@app/register/register.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent },

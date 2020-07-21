@@ -1,55 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Food } from 'src/app/model/entity/food';
-import { OrderDetails } from '../model/wrapper/order-details';
+import { Food } from '@app/model/entity/food';
+import { FoodManageService } from "@app/service/food-manage.service";
+import { CartService } from "@app/service/cart.service";
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  base_url = 'http://localhost:8080'
+  menu: Array<Food>
 
-  foods: Food[]
-
-  constructor(private http: HttpClient) { }
+  constructor(
+    private service: FoodManageService,
+    private cart: CartService
+  ) { }
 
   ngOnInit(): void {
-    this.http.get<Food[]>(this.base_url + '/pub/menu').subscribe(data => this.foods = data);
+    this.service.foods.subscribe((data) => this.menu = data);
   }
-
-  all_food: Food[]
-  cart_item = new Array<OrderDetails.Item>()
 
   add_item(id: string) {
-    let exist = false
-    for (var p of this.cart_item) {
-      if (p.id === id) {
-        exist = true
-        p.qty = p.qty + 1
-      }
-    }
-    if (!exist) {
-      var newItem = new OrderDetails.Item()
-      newItem.id = id
-      newItem.qty = 1
-      this.cart_item.push(newItem)
-    }
+    this.cart.add_one(id)
   }
   minus_item(id: string) {
-    for (var p of this.cart_item) {
-      if (p.id === id) {
-        p.qty = p.qty - 1
-      }
-    }
-    this.cart_item = this.cart_item.filter(function (element) {
-      return element.qty != 0
-    });
-  }
-
-  push_item() {
-    if (this.cart_item.length != 0) {
-      this.http.post(this.base_url + '/api/order/new', this.cart_item).subscribe(data => console.log(data))
-    }
+    this.cart.remove_one(id)
   }
 }

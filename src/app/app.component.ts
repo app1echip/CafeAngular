@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { AccountService } from 'src/app/service/account.service'
+import { Component } from '@angular/core'
+import { AccountService } from '@app/service/account.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,11 @@ import { AccountService } from 'src/app/service/account.service'
 })
 
 export class AppComponent {
-  constructor(private account: AccountService) { }
-  logout() { this.account.logout() }
+
+  constructor(private account: AccountService,
+    private router: Router) { }
+  logout() { 
+    this.router.navigateByUrl('')
+    this.account.prune()
+  }
 }

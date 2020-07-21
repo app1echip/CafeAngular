@@ -1,17 +1,19 @@
 <mat-card>
     <mat-card-content>
-        <form [formGroup]="form">
+        <form>
             <mat-form-field>
-                <input matInput formControlName="username" placeholder="用户名" required>
+                <input matInput [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" placeholder="用户名"
+                    required>
             </mat-form-field>
             <mat-form-field>
-                <input matInput formControlName="password" type="password" placeholder="密码" required>
+                <input matInput [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" type="password"
+                    placeholder="密码" required>
             </mat-form-field>
             <mat-form-field>
-                <input matInput formControlName="email" placeholder="邮箱">
+                <input matInput [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" placeholder="邮箱">
             </mat-form-field>
             <mat-form-field>
-                <input matInput formControlName="phone" placeholder="手机">
+                <input matInput [(ngModel)]="user.phone" [ngModelOptions]="{standalone: true}" placeholder="手机">
             </mat-form-field>
             <button mat-raised-button color="primary" (click)="register()">注册</button>
         </form>

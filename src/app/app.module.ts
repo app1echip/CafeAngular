@@ -1,6 +1,6 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,18 +8,20 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HistoryComponent } from './history/history.component';
-import { LoginComponent } from './login/login.component';
-import { MenuComponent } from './menu/menu.component';
-import { RegisterComponent } from './register/register.component';
-import { HeaderInterceptor } from 'src/app/config/header-interceptor';
-import { ProfileComponent } from './profile/profile.component';
-import { CartComponent } from './cart/cart.component';
-import { ManageUserComponent } from './manage-user/manage-user.component';
-import { ManageFoodComponent } from './manage-food/manage-food.component';
-import { ManageOrderComponent } from './manage-order/manage-order.component';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { AppComponent } from '@app/app.component';
+import { CartComponent } from '@app/cart/cart.component';
+import { HeaderInterceptor } from '@app/config/header-interceptor';
+import { HistoryComponent } from '@app/history/history.component';
+import { LoginComponent } from '@app/login/login.component';
+import { ManageFoodComponent } from '@app/manage-food/manage-food.component';
+import { ManageOrderComponent } from '@app/manage-order/manage-order.component';
+import { ManageUserComponent } from '@app/manage-user/manage-user.component';
+import { MenuComponent } from '@app/menu/menu.component';
+import { ProfileComponent } from '@app/profile/profile.component';
+import { RegisterComponent } from '@app/register/register.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { ManageOrderComponent } from './manage-order/manage-order.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [
     {

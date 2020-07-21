@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { OrderDetails } from '../model/wrapper/order-details';
+import { OrderDetails } from '@app/model/wrapper/order-details';
+import { CartService } from '@app/service/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,9 +9,13 @@ import { OrderDetails } from '../model/wrapper/order-details';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: CartService) { }
 
   ngOnInit(): void {
   }
   @Input() products: Array<OrderDetails.Item>
+
+  commit() {
+    this.service.commit()
+  }
 }

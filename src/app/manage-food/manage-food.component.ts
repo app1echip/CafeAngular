@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Food } from '../model/entity/food';
-import { HttpClient } from '@angular/common/http';
+import { Food } from '@app/model/entity/food';
+import { FoodManageService } from '@app/service/food-manage.service';
 
 @Component({
   selector: 'app-manage-food',
@@ -8,19 +8,20 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./manage-food.component.css']
 })
 export class ManageFoodComponent implements OnInit {
-  base_url = 'http://localhost:8080'
-  foods: Food[]
-  nf = new Food()
-  constructor(private http: HttpClient) { }
+  foods: Array<Food>
+  empty = new Food()
+  constructor(
+    private service: FoodManageService
+  ) { }
 
   ngOnInit(): void {
-    this.http.get<Food[]>(this.base_url + '/admin/food').subscribe(data => this.foods = data);
+    this.service.foods.subscribe((data) => this.foods = data);
   }
 
-  update_food(f: Food) {
-    this.http.post(this.base_url + '/admin/food/update', f).subscribe(data => console.log(data))
+  update_food(food: Food) {
+    this.service.update(food);
   }
-  delete_food(f: Food) {
-    this.http.post(this.base_url + '/admin/food/delete', f).subscribe(data => console.log(data))
+  delete_food(food: Food) {
+    this.service.delete(food);
   }
 }

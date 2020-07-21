@@ -1,5 +1,5 @@
 export class Ordre {
-    id: string
-    time: Date
-    user: string
+    id: string;
+    time: Date;
+    user: string;
 }

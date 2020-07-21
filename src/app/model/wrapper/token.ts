@@ -1,4 +1,5 @@
 export class Token {
-    token: string
-    expire: Date
+    token: string;
+    expire: Date;
+    role: string;
 }

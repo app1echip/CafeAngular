@@ -1,32 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Ordre } from "src/app/model/entity/ordre";
-import { OrdreFood } from "src/app/model/entity/ordre-food";
-import { HttpClient } from '@angular/common/http';
+import { Ordre } from "@app/model/entity/ordre";
+import { OrdreFood } from "@app/model/entity/ordre-food";
+import { OrderManageService } from '@app/service/order-manage.service';
 @Component({
   selector: 'app-manage-order',
   templateUrl: './manage-order.component.html',
   styleUrls: ['./manage-order.component.css']
 })
 export class ManageOrderComponent implements OnInit {
-  base_url = 'http://localhost:8080'
-  orders: Array<Ordre>
-  ofs: Array<OrdreFood>
-  constructor(private http: HttpClient) { }
+  ordres: Array<Ordre>
+  ordrefoods: Array<OrdreFood>
+  constructor(private service: OrderManageService) { }
 
   ngOnInit(): void {
-    this.http.get<Array<Ordre>>(this.base_url + '/admin/ordre').subscribe(data => this.orders = data)
-    this.http.get<Array<OrdreFood>>(this.base_url + '/admin/ordre_food').subscribe(data => this.ofs = data)
+    this.service.ordres.subscribe((data) => this.ordres = data);
+    this.service.ordrefoods.subscribe((data) => this.ordrefoods = data);
   }
-  update_order(o: Ordre) {
-    this.http.post(this.base_url + '/admin/ordre/update', o).subscribe(data => console.log(data))
+  updateOrdre(ordre: Ordre) {
+    this.service.updateOrdre(ordre)
   }
-  update_order_food(o: OrdreFood) {
-    this.http.post(this.base_url + '/admin/ordre_food/update', o).subscribe(data => console.log(data))
+  updateOrdreFood(ordrefood: OrdreFood) {
+    this.service.updateOrdreFood(ordrefood)
   }
-  delete_order(o: Ordre) {
-    this.http.post(this.base_url + '/admin/ordre/delete', o).subscribe(data => console.log(data))
+  deleteOrdre(ordre: Ordre) {
+    this.service.deleteOrdre(ordre)
   }
-  delet_order_food(o: OrdreFood) {
-    this.http.post(this.base_url + '/admin/ordre_food/delete', o).subscribe(data => console.log(data))
+  deleteOrdreFood(ordrefood: OrdreFood) {
+    this.service.deleteOrdreFood(ordrefood)
   }
 }

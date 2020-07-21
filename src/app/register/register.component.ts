@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AccountService } from 'src/app/service/account.service'
+import { AccountService } from '@app/service/account.service'
 import { Router } from '@angular/router';
+import { User } from '@app/model/entity/user';
+import { Token } from '@app/model/wrapper/token';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -9,29 +11,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup
+  user = new User
   constructor(
-    private builder: FormBuilder,
-    private accountService: AccountService,
+    private account: AccountService,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.form = this.builder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      email: [''],
-      phone: ['']
-    })
-  }
+  ngOnInit(): void { }
   register() {
-    const v = this.form.value
-    let suc = false
-    if (v.username && v.password) {
-      suc = this.accountService.signup(v.username, v.password, v.email, v.phone)
+    let succ = (data: Token) => {
+      this.router.navigateByUrl('/profile')
     }
-    if (suc) {
-      this.router.navigateByUrl('')
+    let fail = (error: HttpErrorResponse) => {
+      // do something
     }
+    this.account.login(this.user, succ, fail, true)
   }
 }
