@@ -8,24 +8,16 @@ import { OrderManageService } from '@app/service/order-manage.service';
   styleUrls: ['./manage-order.component.css']
 })
 export class ManageOrderComponent implements OnInit {
-  ordres: Array<Ordre>
-  ordrefoods: Array<OrdreFood>
+  ordres: Ordre[]
+  ordrefoods: OrdreFood[]
   constructor(private service: OrderManageService) { }
-
-  ngOnInit(): void {
-    this.service.ordres.subscribe((data) => this.ordres = data);
-    this.service.ordrefoods.subscribe((data) => this.ordrefoods = data);
+  ngOnInit(): void { }
+  ngDoCheck() {
+    this.ordres = this.service.getOrdres()
+    this.ordrefoods = this.service.getOrdreFoods()
   }
-  updateOrdre(ordre: Ordre) {
-    this.service.updateOrdre(ordre)
-  }
-  updateOrdreFood(ordrefood: OrdreFood) {
-    this.service.updateOrdreFood(ordrefood)
-  }
-  deleteOrdre(ordre: Ordre) {
-    this.service.deleteOrdre(ordre)
-  }
-  deleteOrdreFood(ordrefood: OrdreFood) {
-    this.service.deleteOrdreFood(ordrefood)
-  }
+  updateOrdre(body: Ordre) { this.service.requestUpdateOrdre(body) }
+  updateOrdreFood(body: OrdreFood) { this.service.requestUpdateOrdreFood(body) }
+  deleteOrdre(body: Ordre) { this.service.requestDeleteOrdre(body) }
+  deleteOrdreFood(body: OrdreFood) { this.service.requestDeleteOrdreFood(body) }
 }

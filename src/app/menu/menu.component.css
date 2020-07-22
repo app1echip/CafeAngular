@@ -1,0 +1,14 @@
+mat-card {
+    width: 300px;
+}
+.margin-card {
+    margin: 30px;
+}
+.fab-pos {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}
+mat-raise-button {
+    width: 10px;
+}

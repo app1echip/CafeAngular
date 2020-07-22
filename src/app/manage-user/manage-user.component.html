@@ -1,22 +1,56 @@
 <div>
-    <ul>
-        <li *ngFor="let u of users">
-            id: <input [(ngModel)]="u.id">
-            username: <input [(ngModel)]="u.username">
-            password: <input [(ngModel)]="u.password"><br>
-            email: <input [(ngModel)]="u.email">
-            phone: <input [(ngModel)]="u.phone">
-            <button (click)="updateUser(u)">提交</button>
-            <button (click)="deleteUser(u)">删除</button>
-        </li>
-    </ul>
+    <mat-table [dataSource]="users">
+        <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef>username</mat-header-cell>
+            <mat-cell *matCellDef="let u">
+                <input matInput [(ngModel)]="u.username">
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="password">
+            <mat-header-cell *matHeaderCellDef>password</mat-header-cell>
+            <mat-cell *matCellDef="let u">
+                <input matInput [(ngModel)]="u.password">
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>email</mat-header-cell>
+            <mat-cell *matCellDef="let u">
+                <input matInput [(ngModel)]="u.email">
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef>phone</mat-header-cell>
+            <mat-cell *matCellDef="let u">
+                <input matInput [(ngModel)]="u.phone">
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>id</mat-header-cell>
+            <mat-cell *matCellDef="let u">{{u.id}}
+                <button (click)="updateUser(u)">更新</button>
+                <button (click)="deleteUser(u)">删除</button>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="user_display"></mat-header-row>
+        <mat-row *matRowDef="let row;columns:user_display;"></mat-row>
+    </mat-table>
 </div>
 
 <div>
-    <ul>
-        <li *ngFor="let i of user_roles">
-            id: {{i.user}}, role: <input [(ngModel)]="i.role">
-            <button (click)="updateRole(i)">提交</button>
-        </li>
-    </ul>
+    <mat-table [dataSource]="user_roles">
+        <ng-container matColumnDef="role">
+            <mat-header-cell *matHeaderCellDef>role</mat-header-cell>
+            <mat-cell *matCellDef="let u">
+                <input matInput [(ngModel)]="u.role">
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="user">
+            <mat-header-cell *matHeaderCellDef>user(id)</mat-header-cell>
+            <mat-cell *matCellDef="let u">{{u.user}}
+                <button (click)="updateRole(u)">更新</button>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="userrole_display"></mat-header-row>
+        <mat-row *matRowDef="let row;columns:userrole_display;"></mat-row>
+    </mat-table>
 </div>

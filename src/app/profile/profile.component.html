@@ -1,8 +1,21 @@
-<div>
-    id: <input [(ngModel)]="profile.id"><br>
-    username: <input [(ngModel)]="profile.username"><br>
-    password: <input [(ngModel)]="profile.password"><br>
-    email: <input [(ngModel)]="profile.email"><br>
-    phone: <input [(ngModel)]="profile.phone">
-    <button (click)="update()">更新</button>
-</div>
+<mat-card>
+    <mat-card-content>
+        <form>
+            <mat-form-field>
+                <input matInput [(ngModel)]="profile.username" [ngModelOptions]="{standalone: true}" placeholder="用户名"
+                    required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="profile.password" [ngModelOptions]="{standalone: true}" placeholder="密码"
+                    required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="profile.email" [ngModelOptions]="{standalone: true}" placeholder="邮箱">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [(ngModel)]="profile.phone" [ngModelOptions]="{standalone: true}" placeholder="手机">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="update()">更新</button>
+        </form>
+    </mat-card-content>
+</mat-card>

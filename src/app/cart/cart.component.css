@@ -1,0 +1,15 @@
+table {
+    width: 70%;
+    margin: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+tr.mat-footer-row {
+    font-weight: bold;
+}
+
+.fab-pos {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+}

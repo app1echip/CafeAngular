@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     let succ = (data: Token) => {
-      this.router.navigateByUrl('/profile')
+      this.router.navigateByUrl('/menu')
     }
     let fail = (error: HttpErrorResponse) => {
       // do something

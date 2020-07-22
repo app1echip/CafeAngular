@@ -8,20 +8,11 @@ import { FoodManageService } from '@app/service/food-manage.service';
   styleUrls: ['./manage-food.component.css']
 })
 export class ManageFoodComponent implements OnInit {
-  foods: Array<Food>
-  empty = new Food()
-  constructor(
-    private service: FoodManageService
-  ) { }
-
-  ngOnInit(): void {
-    this.service.foods.subscribe((data) => this.foods = data);
-  }
-
-  update_food(food: Food) {
-    this.service.update(food);
-  }
-  delete_food(food: Food) {
-    this.service.delete(food);
-  }
+  foods: Food[]
+  empty = new Food
+  constructor(private service: FoodManageService) { }
+  ngOnInit(): void { }
+  ngDoCheck() { this.foods = this.service.get() }
+  update(body: Food) { this.service.requestUpdate(body) }
+  delete(body: Food) { this.service.requestDelete(body) }
 }

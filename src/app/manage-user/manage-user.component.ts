@@ -8,27 +8,19 @@ import { UserManageService } from "@app/service/user-manage.service";
   styleUrls: ['./manage-user.component.css']
 })
 export class ManageUserComponent implements OnInit {
-  users: Array<User>
-  user_roles: Array<UserRole>
+  users: User[]
+  user_roles: UserRole[]
   constructor(
     private service: UserManageService
   ) { }
-
-  ngOnInit(): void {
-    this.service.users.subscribe(
-      (data) => this.users = data
-    )
-    this.service.roles.subscribe(
-      (data) => this.user_roles = data
-    )
+  user_display: string[] = ['username', 'password', 'email', 'phone', 'id']
+  userrole_display = ['role', 'user']
+  ngOnInit(): void { }
+  ngDoCheck() {
+    this.users = this.service.getUsers()
+    this.user_roles = this.service.getUserRoles()
   }
-  updateUser(user: User) {
-    this.service.updateUser(user)
-  }
-  updateRole(role: UserRole) {
-    this.service.updateRole(role)
-  }
-  deleteUser(user: User) {
-    this.service.deleteUser(user)
-  }
+  updateUser(user: User) { this.service.requestUpdateUser(user) }
+  updateRole(role: UserRole) { this.service.requestUpdateRole(role) }
+  deleteUser(user: User) { this.service.requestDeleteUser(user) }
 }

@@ -1,3 +1,32 @@
-<div *ngFor="let pro of products">
-    {{pro.id}}, {{pro.qty}}
+<div>
+    <table mat-table [dataSource]="getDetail()">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>餐品名称</th>
+            <td mat-cell *matCellDef="let item">{{item.name}}</td>
+            <td mat-footer-cell *matFooterCellDef>订单金额</td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>单价</th>
+            <td mat-cell *matCellDef="let item">{{item.price}}</td>
+            <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+        <ng-container matColumnDef="qty">
+            <th mat-header-cell *matHeaderCellDef>数量</th>
+            <td mat-cell *matCellDef="let item">{{item.qty}}</td>
+            <td mat-footer-cell *matFooterCellDef>{{getTotalNumber()}}</td>
+        </ng-container>
+        <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef>合计</th>
+            <td mat-cell *matCellDef="let item">{{item.total|currency:'CNY'}}</td>
+            <td mat-footer-cell *matFooterCellDef>{{getTotalCost()|currency:'CNY'}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="disp"></tr>
+        <tr mat-row *matRowDef="let row;columns:disp;"></tr>
+        <tr mat-footer-row *matFooterRowDef="disp"> </tr>
+    </table>
+</div>
+<div class="fab-pos">
+    <button mat-fab (click)="commit()">
+        <mat-icon>send</mat-icon>
+    </button>
 </div>

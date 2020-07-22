@@ -1,16 +1,16 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Cafe</span>
+    <span>某某咖啡厅</span>
+    <button mat-button routerLink="/menu">菜单</button>
+    <button mat-button *ngIf="loggedin()" routerLink="/history">历史订单</button>
+    <button mat-button *ngIf="loggedin()" routerLink="/profile">个人资料</button>
+    <button mat-button *ngIf="admin()" routerLink="/user">管理用户</button>
+    <button mat-button *ngIf="admin()" routerLink="/food">管理餐品</button>
+    <button mat-button *ngIf="admin()" routerLink="/order">管理订单</button>
     <span class="spacer"></span>
-    <button mat-button routerLink="">菜单</button>
-    <button mat-button routerLink="/login">登录</button>
-    <button mat-button routerLink="/register">注册</button>
-    <button mat-button routerLink="/history">历史订单</button>
-    <button mat-button routerLink="/profile">个人资料</button>
-    <button mat-button routerLink="/super/user">管理用户</button>
-    <button mat-button routerLink="/super/food">管理餐品</button>
-    <button mat-button routerLink="/super/order">管理订单</button>
-    <button mat-button (click)="logout()">退出</button>
+    <button mat-button *ngIf="!loggedin()" routerLink="/login">登录</button>
+    <button mat-button *ngIf="!loggedin()" routerLink="/register">注册</button>
+    <button mat-button *ngIf="loggedin()" (click)="logout()">退出</button>
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>

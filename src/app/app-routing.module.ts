@@ -8,16 +8,19 @@ import { ManageUserComponent } from '@app/manage-user/manage-user.component';
 import { MenuComponent } from '@app/menu/menu.component';
 import { ProfileComponent } from '@app/profile/profile.component';
 import { RegisterComponent } from '@app/register/register.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
-  { path: '', component: MenuComponent },
+  { path: '', redirectTo: 'menu', pathMatch: 'full' },
+  { path: 'menu', component: MenuComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'super/user', component: ManageUserComponent },
-  { path: 'super/food', component: ManageFoodComponent },
-  { path: 'super/order', component: ManageOrderComponent }
+  { path: 'user', component: ManageUserComponent },
+  { path: 'food', component: ManageFoodComponent },
+  { path: 'order', component: ManageOrderComponent },
+  { path: 'cart', component: CartComponent }
 ];
 
 @NgModule({

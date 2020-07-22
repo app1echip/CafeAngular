@@ -1,17 +1,21 @@
-<div>
-    <ul>
-        <br>
-        <li *ngFor="let od of history">
-            id: {{od.id}}
+<div *ngFor="let od of history">
+    <mat-card>
+
+        <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon>local_cafe</mat-icon>
+            </div>
+            <mat-card-title> 订单号：{{od.id}} </mat-card-title>
+            <mat-card-subtitle> 订单时间： {{od.time}} </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
             <div>
                 <ul>
                     <li *ngFor="let c of od.content">
-                        content.id: {{c.id}}<br>
-                        content.qty: {{c.qty}}<br>
+                        {{getFoodName(c.id)}} x{{c.qty}}<br>
                     </li>
                 </ul>
             </div>
-            time: {{od.time}}
-        </li>
-    </ul>
+        </mat-card-content>
+    </mat-card>
 </div>

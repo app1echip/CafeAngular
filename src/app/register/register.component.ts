@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void { }
   register() {
     let succ = (data: Token) => {
-      this.router.navigateByUrl('/profile')
+      this.router.navigateByUrl('/menu')
     }
     let fail = (error: HttpErrorResponse) => {
       // do something

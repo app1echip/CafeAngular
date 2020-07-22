@@ -21,7 +21,12 @@ import { MenuComponent } from '@app/menu/menu.component';
 import { ProfileComponent } from '@app/profile/profile.component';
 import { RegisterComponent } from '@app/register/register.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatIconModule } from "@angular/material/icon";
+import { MatBadgeModule } from "@angular/material/badge";
+import { MatTableModule } from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -48,7 +53,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatBadgeModule,
+    MatTableModule
   ],
   providers: [
     {

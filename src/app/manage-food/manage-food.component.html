@@ -3,8 +3,8 @@
         <li *ngFor="let food of foods">
             id: <input [(ngModel)]="food.id">
             name: <input [(ngModel)]="food.name">
-            <button (click)="update_food(food)">提交</button>
-            <button (click)="delete_food(food)">删除</button> <br>
+            <button (click)="update(food)">提交</button>
+            <button (click)="delete(food)">删除</button> <br>
             cate: <input [(ngModel)]="food.cate">
             price: <input type="number" [(ngModel)]="food.price">
             stock: <input type="number" [(ngModel)]="food.stock"><br>
@@ -15,7 +15,7 @@
         新增：
         <li>
             name: <input [(ngModel)]="empty.name">
-            <button (click)="update_food(empty)">提交</button> <br>
+            <button (click)="update(empty)">提交</button> <br>
             cate: <input [(ngModel)]="empty.cate">
             price: <input type="number" [(ngModel)]="empty.price">
             stock: <input type="number" [(ngModel)]="empty.stock"><br>

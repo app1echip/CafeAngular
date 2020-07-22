@@ -9,11 +9,18 @@ import { Router } from '@angular/router'
 })
 
 export class AppComponent {
-
-  constructor(private account: AccountService,
-    private router: Router) { }
-  logout() { 
-    this.router.navigateByUrl('')
-    this.account.prune()
+  constructor(
+    private account: AccountService,
+    private router: Router
+  ) { }
+  loggedin() {
+    return this.account.loggedin
+  }
+  admin() {
+    return this.account.admin
+  }
+  logout() {
+    this.account.logout()
+    this.router.navigateByUrl('/menu')
   }
 }

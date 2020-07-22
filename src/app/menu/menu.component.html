@@ -1,15 +1,39 @@
-<div>
-    <ul>
-        <li *ngFor="let food of menu">
-            id: <input [(ngModel)]="food.id">
-            name: <input [(ngModel)]="food.name">
-            <button (click)="add_item(food.id)">+</button> <button (click)="minus_item(food.id)">-</button> <br>
-            cate: <input [(ngModel)]="food.cate">
-            price: <input type="number" [(ngModel)]="food.price">
-            stock: <input type="number" [(ngModel)]="food.stock"><br>
-            sales: <input type="number" [(ngModel)]="food.sales">
-            des: <input [(ngModel)]="food.des">
-            img: <input type="url" [(ngModel)]="food.img"><br><br>
-        </li>
-    </ul>
+<div fxLayout="row wrap" class="margin-card">
+    <mat-chip-list>
+        <mat-chip [selected]="current_cate === null" (click)="select()">全部</mat-chip>
+        <mat-chip *ngFor="let cate of cates" [selected]="current_cate === cate" (click)="select(cate)">{{cate}}
+        </mat-chip>
+    </mat-chip-list>
+</div>
+<div class="margin-card">
+    <mat-form-field>
+        <input matInput placeholder="搜索" (input)="search($event.target.value)">
+    </mat-form-field>
+</div>
+<div fxLayout="row wrap">
+    <div *ngFor="let food of display" class="margin-card">
+        <mat-card>
+            <img mat-card-image src={{food.img}} />
+            <mat-card-title> {{food.name}} </mat-card-title>
+            <mat-card-subtitle> {{food.cate}} </mat-card-subtitle>
+            <mat-card-content> {{food.des}} </mat-card-content>
+            <mat-card-actions>
+                {{food.price|currency:'CNY'}}
+                <button mat-raised-button (click)="removeItem(food.id)" [disabled]="getSelected(food.id)==0">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                {{getSelected(food.id)}}
+                <button mat-raised-button (click)="addItem(food.id)" [disabled]="food.stock==0">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+
+
+<div class="fab-pos">
+    <button mat-fab [matBadge]="in_cart" routerLink="/cart">
+        <mat-icon>shopping_cart</mat-icon>
+    </button>
 </div>
